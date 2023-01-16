@@ -1,0 +1,26 @@
+-- local function map(mode, lhs, rhs, opts)
+--   local options = { noremap = true }
+--   if opts then
+--     options = vim.tbl_extend("force", options, opts)
+--   end
+--   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+-- end
+--
+-- --Telescope 
+-- local km = vim.keymap
+-- km.set("n", "<Leader>ff", function()require("telescope.builtin").find_files()end)
+-- km.set("n", "<Leader>fb", function()require("telescope.builtin").buffers()end)
+-- km.set("n", "<Leader>fg", function()require("telescope.builtin").live_grep()end)
+-- km.set("n", "<Leader>fh", function()require("telescope.builtin").help_tags()end)
+--
+-- -- Splits
+-- map("n", "<Leader>vs", ":vsplit")
+-- map("n", "<Leader>hs", ":split")
+--
+-- --Ex
+-- map("n", "<Leader>el", ":Ex")
+--
+-- local nnoremap = Remap.nnoremap
+-- nnoremap("<Leader>ff", function()
+--     require('telescope.builtin').find_files()
+-- end)
