@@ -20,7 +20,6 @@ set diffopt+=vertical
 
 " Tabs and whitespace
 " set textwidth=80
-set expandtab
 set list
 set tabstop=2
 set softtabstop=2
