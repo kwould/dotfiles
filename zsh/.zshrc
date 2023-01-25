@@ -1,10 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/kevincasado/Library/Python/3.10/bin
-alias rs="source ~/.zshrc"
+alias zrs="source ~/.zshrc"
 alias gs="git status"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+alias k="kubectl"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
