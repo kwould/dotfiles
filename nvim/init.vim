@@ -42,23 +42,19 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
-function! OpenInSourceGraph()
-    let prefix = "https://sourcegraph.twitter.biz/"
+function! OpenInGH()
+    let prefix = "https://github.com/"
     let full_filepath = expand('%:p')
     let repo = split(full_filepath, "/")[3]
-    if repo == "config"
-      let giturl = "config-git.twitter.biz/"
-    else
-      let giturl = "git.twitter.biz/"
-    endif
-    let filename = full_filepath[32:]
+    let filename = full_filepath[37:]
     let lineNumber = "\\#L" . line(".")
-    let filler="/-/blob/"
-    let url = prefix . giturl . repo . filler . filename . lineNumber
+    let filler="/blob/main/"
+		let configurl = $WORK_GH_URL
+    let url = prefix . configurl ."/". repo . filler . filename . lineNumber
     silent exec "!open '" . url . "'"
 endfunction
 
-nnoremap <Leader>sgh :call OpenInSourceGraph()<CR>
+nnoremap <Leader>sgh :call OpenInGH()<CR>
 
-lua require('dap-python').setup('/Users/kevincasado/personal/.venv/bin/activate')
+lua require('dap-python').setup('$HOME/workspace/.venv/bin/activate')
 autocmd FileType *.py set shiftwidth=2
