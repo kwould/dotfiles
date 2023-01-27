@@ -46,11 +46,13 @@ function! OpenInGH()
     let prefix = "https://github.com/"
     let full_filepath = expand('%:p')
     let repo = split(full_filepath, "/")[3]
-    let filename = full_filepath[37:]
+    let filename = join(split(full_filepath, "/")[4:], "/")
     let lineNumber = "\\#L" . line(".")
-    let filler="/blob/main/"
+		let gitBranch = trim(system("git rev-parse --abbrev-ref HEAD"))
+    let filler = "/blob/"
 		let configurl = $WORK_GH_URL
-    let url = prefix . configurl ."/". repo . filler . filename . lineNumber
+    let url = prefix . configurl ."/". repo . filler . gitBranch . "/" . filename . lineNumber
+		echo url
     silent exec "!open '" . url . "'"
 endfunction
 
