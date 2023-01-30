@@ -4,6 +4,12 @@ vim.g.netrw_winsize = 25
 
 vim.opt_global.shortmess:remove("F")
 
-autocm BufWritePre *.py lua vim.lsp.buf.format({ async = True})
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = {"*.go"},
+	command = "lua vim.lsp.buf.format()",
+})
 
-
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = {"*.py"},
+	command = "lua vim.lsp.buf.format()",
+})
