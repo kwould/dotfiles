@@ -34,7 +34,7 @@ return require('packer').startup(function()
     config=get_setup("colors"),
   })
   -- metals
-  use({'git@github.com:scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+  use({'git@github.com:scalameta/nvim-metals', requires = { "git@github.com:nvim-lua/plenary.nvim" }})
   -- Packer can manage itself
   use 'git@github.com:wbthomason/packer.nvim'
   -- dap
@@ -74,10 +74,8 @@ return require('packer').startup(function()
     })
     -- lspconfigs 
 		-- dap-go
-    use {'git@github.com:leoluz/nvim-dap-go', config = function()
-        require('dap-go').setup()
-end
-}
+    use {'git@github.com:leoluz/nvim-dap-go', 
+		config = get_setup("dap-go")}
     -- treesitter
     use({
       "git@github.com:nvim-treesitter/nvim-treesitter",
@@ -89,9 +87,9 @@ end
 end
 }
     -- completion stuff
-    use({ "git@github.com:onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
+    use({ "git@github.com:onsails/lspkind-nvim", requires = { { "git@github.com:famiu/bufdelete.nvim" } } })
     use({
-	  'VonHeikemen/lsp-zero.nvim',
+	  'git@github.com:VonHeikemen/lsp-zero.nvim',
 	  requires = {
 		  -- LSP Support
 		  {'git@github.com:neovim/nvim-lspconfig'},
@@ -107,7 +105,6 @@ end
 		  {'git@github.com:hrsh7th/cmp-nvim-lua'},
 
 		  -- Snippets
-		  {'git@github.com:L3MON4D3/LuaSnip'},
 		  {'git@github.com:rafamadriz/friendly-snippets'},
 	  },
     config = get_setup("lsp"),

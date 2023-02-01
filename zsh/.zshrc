@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/kevincasado/Library/Python/3.10/bin
+export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/kevincasado/Library/Python/3.10/bin:/Users/kcasado/.cargo/bin
 alias zrs="source ~/.zshrc"
 alias gs="git status"
 # Path to your oh-my-zsh installation.
@@ -129,3 +129,6 @@ fi
 if [ -f "$HOME/.workrc" ]; then
 	source $HOME/.workrc
 fi
+
+eval `ssh-agent -s`
+ssh-add

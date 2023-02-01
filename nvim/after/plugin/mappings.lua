@@ -62,12 +62,14 @@ nnoremap("<Leader>dc", function()require("dap").continue()end)
 nnoremap("<Leader>do", function()require("dap").step_over()end)
 nnoremap("<Leader>di", function()require("dap").step_into()end)
 nnoremap("<Leader>dr", function()require("dap").repl.open()end)
+nnoremap("<Leader>dx", function()require("dap").terminate()end)
 nnoremap("<Leader>duo", function()require("dapui").open()end)
 nnoremap("<Leader>duc", function()require("dapui").close()end)
 --Python-dap
 nnoremap("<Leader>dt", function()require("dap-python").test_method()end)
 nnoremap("<Leader>dtc", function()require("dap-python").test_class()end)
-
+nnoremap("<Leader>dgt", function()require("dap-go").debug_test()end)
+nnoremap("<Leader>dglt", function()require("dap-python").debug_last_test()end)
 --diagnostics
 nnoremap("<Leader>g?", function()vim.diagnostic.open_float()end)
 

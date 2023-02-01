@@ -1,5 +1,4 @@
 lua require('kwould.plugins')
-lua require('kwould.mappings')
 let mapleader = " "
 " Buffers
 set hidden
