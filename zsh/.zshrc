@@ -133,3 +133,4 @@ fi
 
 eval `ssh-agent -s`
 ssh-add
+export DOTFILE_LOC="~/dotfiles"

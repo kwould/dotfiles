@@ -80,3 +80,8 @@ end)
 nnoremap("<Leader>cds", function()
   require('kwould.telescope').search_scratch({hidden = true})
 end)
+
+-- kwould stuff
+nnoremap("<Leader>sgh", function()
+  require('kwould.kwould').search_source_repo()
+end)
