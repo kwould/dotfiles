@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/kevincasado/Library/Python/3.10/bin:/Users/kcasado/.cargo/bin
 alias zrs="source ~/.zshrc"
+export XDG_CONFIG_HOME=~/.config
 alias gs="git status"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
