@@ -32,8 +32,10 @@ M.search_source_repo = function()
 	local gitBranch = "master"
 	local configurl = os.getenv("WORK_GH_URL")
 	local url = string.format("%s/%s/%s/blob/%s/%s", prefix, configurl, repo, gitBranch, filename)
-	-- local finalUrl = url .. "\#L" .. vim.fn.line(".")
-	vim.cmd('silent exec "!open \'' .. url .. '\'"')
+	local finalUrl = url .. "#" .. "L" .. vim.fn.line(".")
+	-- print(finalUrl)
+	print('silent exec "!open \'' .. finalUrl .. '\'"')
+	vim.cmd('silent exec "!open \'' .. finalUrl .. '\'"')
 end
 
 return M
