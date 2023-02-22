@@ -3,6 +3,8 @@ export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/ke
 alias zrs="source ~/.zshrc"
 export XDG_CONFIG_HOME=~/.config
 alias gs="git status"
+alias gr="git fetch; git rebase -i origin/main"
+alias gR="git fetch; git rebase -i origin/master"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 alias k="kubectl"
@@ -13,6 +15,7 @@ export KO_DOCKER_REPO='docker.io/kwould'
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 export GOPATH=$HOME/go
 export PATH=$GOPATH:$PATH
+# aliases
 ZSH_THEME="robbyrussell"
 
 SSH_ENV="$HOME/.ssh/environment"
