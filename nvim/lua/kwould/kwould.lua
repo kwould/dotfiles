@@ -35,7 +35,7 @@ M.search_source_repo = function()
 	local finalUrl = url .. "#" .. "L" .. vim.fn.line(".")
 	-- print(finalUrl)
 	print('silent exec "!open \'' .. finalUrl .. '\'"')
-	vim.cmd('silent exec "!open \'' .. finalUrl .. '\'"')
+	vim.cmd('silent exec "!open \'' .. url .. '\'"')
 end
 
 return M
