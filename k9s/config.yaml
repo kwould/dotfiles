@@ -10,33 +10,11 @@ k9s:
   noIcons: false
   logger:
     tail: 100
-    buffer: 5000
+    buffer: 500000
     sinceSeconds: -1
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: rpi-cluster
-  currentCluster: rpi-cluster
-  clusters:
-    rpi-cluster:
-      namespace:
-        active: all
-        lockFavorites: false
-        favorites:
-        - default
-      view:
-        active: nodes
-      featureGates:
-        nodeShell: false
-      shellPod:
-        image: busybox:1.35.0
-        command: []
-        args: []
-        namespace: default
-        limits:
-          cpu: 100m
-          memory: 100Mi
-      portForwardAddress: localhost
   thresholds:
     cpu:
       critical: 90
