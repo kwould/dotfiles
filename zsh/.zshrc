@@ -138,4 +138,6 @@ fi
 
 eval `ssh-agent -s`
 ssh-add
+brew services start yabai
+brew services start skhd
 export DOTFILE_LOC="~/dotfiles"
