@@ -109,6 +109,7 @@ end
 	  },
     config = get_setup("lsp"),
   })
+	use('theprimeagen/harpoon')
   use ({
         "git@github.com:numToStr/Comment.nvim",
         config = function() require("Comment").setup() end,

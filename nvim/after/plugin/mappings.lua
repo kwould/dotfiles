@@ -36,7 +36,7 @@ end)
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
   {silent = true, noremap = true}
 )
-vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>TroubleToggle", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>TroubleToggle<cr>", {silent = true, noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
   {silent = true, noremap = true}
 )
@@ -91,3 +91,16 @@ end)
 nnoremap("<Leader>scc", function()
   require('kwould.kwould').search_source_repo("curr")
 end)
+
+
+-- harpoon
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>ha", mark.add_file)
+vim.keymap.set("n", "<leader>hm", ui.toggle_quick_menu)
+
+vim.keymap.set("n", "<leader>h1", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<leader>h2", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<leader>h3", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<leader>h4", function() ui.nav_file(4) end)
