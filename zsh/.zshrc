@@ -137,7 +137,10 @@ if [ -f "$HOME/.workrc" ]; then
 fi
 
 eval `ssh-agent -s`
-ssh-add
-brew services start yabai
-brew services start skhd
+ssh-edd
+# Finding services
+brew services list | grep yabai | awk '{ print $2}'
+brew services list | grep skhd |  awk '{ print $2}'
+brew services restart yabai
+brew services restart skhd
 export DOTFILE_LOC="~/dotfiles"
