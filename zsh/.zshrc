@@ -137,10 +137,16 @@ if [ -f "$HOME/.workrc" ]; then
 fi
 
 eval `ssh-agent -s`
-ssh-edd
-# Finding services
-# brew services list | grep yabai | awk '{ print $2}'
-# brew services list | grep skhd |  awk '{ print $2}'
-# brew services restart yabai
-# brew services restart skhd
+ssh-add
+manage_brew_service () {
+	is_running=$(brew services list | grep $1 | awk '{ print $2}')
+	if [ "$is_running" = "started" ]; then
+		echo "Not starting $1 because it's already running"
+	else
+		brew services start $1
+	fi
+}
+# homebrew services
+manage_brew_service "yabai"
+manage_brew_service "skhd"
 export DOTFILE_LOC="~/dotfiles"
