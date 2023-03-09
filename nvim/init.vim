@@ -44,18 +44,3 @@ nnoremap <leader>l <C-w>l
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 lua require('dap-python').setup('$HOME/workspace/.venv/bin/activate')
 autocmd FileType *.py set shiftwidth=2
-" I need this until I can port the lua portion sadly
-" function! OpenInGH()
-"     let prefix = "https://github.com/"
-"     let full_filepath = expand('%:p')
-"     let repo = split(full_filepath, "/")[3]
-"     let filename = join(split(full_filepath, "/")[4:], "/")
-"     let lineNumber = "\\#L" . line(".")
-" 		let gitBranch = trim(system("git rev-parse --abbrev-ref HEAD"))
-"     let filler = "/blob/"
-" 		let configurl = $WORK_GH_URL
-"     let url = prefix . configurl ."/". repo . filler . gitBranch . "/" . filename . lineNumber
-" 		echo url
-"     silent exec "!open '" . url . "'"
-" endfunction
-" nnoremap <Leader>sgh :call OpenInGH()<CR>
