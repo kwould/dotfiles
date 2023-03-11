@@ -106,6 +106,7 @@ end
 
 		  -- Snippets
 		  {'git@github.com:rafamadriz/friendly-snippets'},
+			{'git@github.com:L3MON4D3/LuaSnip'},
 	  },
     config = get_setup("lsp"),
   })
