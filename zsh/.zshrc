@@ -9,6 +9,18 @@ alias gR="git fetch; git rebase -i origin/master"
 export ZSH="$HOME/.oh-my-zsh"
 alias k="kubectl"
 export KO_DOCKER_REPO='docker.io/kwould'
+alias pvenv=create_virtualenv
+
+function create_virtualenv {
+	echo "creating virtualenv"
+	python3 -m virtualenv .venv
+	source .venv/bin/activate
+	if [ -f "requirements.txt" ]; then
+		echo "installing requirements for package"
+		pip install -r requirements.txt
+	fi
+
+}
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
