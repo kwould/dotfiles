@@ -159,6 +159,6 @@ manage_brew_service () {
 	fi
 }
 # homebrew services
-manage_brew_service "yabai"
-manage_brew_service "skhd"
+# manage_brew_service "yabai"
+# manage_brew_service "skhd"
 export DOTFILE_LOC="~/dotfiles"
