@@ -5,6 +5,7 @@ export XDG_CONFIG_HOME=~/.config
 alias gs="git status"
 alias gr="git fetch; git rebase -i origin/main"
 alias gR="git fetch; git rebase -i origin/master"
+alias gpf="git push origin --force"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 alias k="kubectl"
