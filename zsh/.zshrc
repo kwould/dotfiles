@@ -162,4 +162,8 @@ manage_brew_service () {
 # homebrew services
 # manage_brew_service "yabai"
 # manage_brew_service "skhd"
+# source workrc if exists
+if [ -f "$HOME/.personalrc" ]; then
+	source $HOME/.personalrc
+fi
 export DOTFILE_LOC="~/dotfiles"
