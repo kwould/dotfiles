@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 alias k="kubectl"
 export KO_DOCKER_REPO='docker.io/kwould'
 alias pvenv=create_virtualenv
-
+alias cvenv="source .venv/bin/activate"
 function create_virtualenv {
 	echo "creating virtualenv"
 	python3 -m virtualenv .venv
