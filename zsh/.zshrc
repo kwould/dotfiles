@@ -152,6 +152,8 @@ fi
 
 eval `ssh-agent -s`
 ssh-add
+ssh-add --apple-use-keychain;
+ssh-add --apple-load-keychain;
 manage_brew_service () {
 	is_running=$(brew services list | grep $1 | awk '{ print $2}')
 	if [ "$is_running" = "started" ]; then
