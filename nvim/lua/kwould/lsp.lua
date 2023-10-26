@@ -40,3 +40,12 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+require('lspconfig')['pyright'].setup{
+    on_attach = on_attach,
+}
+require'lspconfig'.bashls.setup{
+  on_attach = on_attach,
+}
+require'lspconfig'.gopls.setup{}
+
+require'lspconfig'.rust_analyzer.setup{}

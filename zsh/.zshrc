@@ -15,7 +15,7 @@ alias pvenv=create_virtualenv
 alias cvenv="source .venv/bin/activate"
 function create_virtualenv {
 	echo "creating virtualenv"
-	python3 -m virtualenv .venv
+	python3 -m venv .venv
 	source .venv/bin/activate
 	if [ -f "requirements.txt" ]; then
 		echo "installing requirements for package"
