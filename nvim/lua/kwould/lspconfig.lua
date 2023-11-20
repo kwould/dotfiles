@@ -38,6 +38,13 @@ require('lspconfig')['pyright'].setup{
 require'lspconfig'.bashls.setup{
   on_attach = on_attach,
 }
-require'lspconfig'.gopls.setup{}
+require'lspconfig'.gopls.setup{
+	on_attach = on_attach,
+	settings = {
+		gopls = {
+			gofmt = true,
+		},
+	},
+}
 
 require'lspconfig'.rust_analyzer.setup{}

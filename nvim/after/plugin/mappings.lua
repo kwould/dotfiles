@@ -7,7 +7,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-
 -- Splits
 map("n", "<Leader>vs", ":vsplit")
 map("n", "<Leader>hs", ":split")
@@ -31,7 +30,9 @@ end)
 nnoremap("<Leader>fh", function()
     require('telescope.builtin').help_tags()
 end)
-
+nnoremap("<Leader>fk", function()
+    require('telescope.builtin').keymaps()
+end)
 -- Lua
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
   {silent = true, noremap = true}

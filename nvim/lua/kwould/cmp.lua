@@ -1,82 +1,20 @@
-local cmp = require("cmp")
-local lspkind = require("lspkind")
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
 cmp.setup({
-  snippet = {
-    expand = function(args)
-			require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
-    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ["<CR>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        select = true,
-      }),
-      { "i", "c" }
-    ),
-  },
-  completion = {
-    completeopt = "menu,menuone,noinsert",
-      keyword_length = 2,
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "vsnip" },
-    {
-      name = "buffer",
-      option = {
-        get_bufnrs = function()
-          local bufs = {}
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            bufs[vim.api.nvim_win_get_buf(win)] = true
-          end
-          return vim.tbl_keys(bufs)
-        end,
-      },
-    },
-    { name = "look", keyword_length = 3, option = { convert_case = true, loud = true } },
-    { name = "nvim_lua" },
-    { name = "calc" },
-    { name = "path" },
-  },
-  formatting = {
-    format = lspkind.cmp_format({
-      with_text = true,
-      maxwidth = 50,
-      menu = {
-        buffer = "",
-        nvim_lsp = "",
-        spell = "",
-        look = "",
-      },
-    }),
-  },
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
-  },
-})
+  mapping = cmp.mapping.preset.insert({
+    -- `Enter` key to confirm completion
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
 
--- cmp.setup.cmdline("/", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = "buffer" },
---   },
--- })
+    -- Ctrl+Space to trigger completion menu
+    ['<C-Space>'] = cmp.mapping.complete(),
 
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = "path" },  {
-      { name = 'cmdline' }
-  }}),
+    -- Navigate between snippet placeholder
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+    -- Scroll up and down in the completion documentation
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  })
 })

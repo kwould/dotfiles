@@ -90,23 +90,28 @@ end
     use({ "git@github.com:onsails/lspkind-nvim", requires = { { "git@github.com:famiu/bufdelete.nvim" } } })
     use({
 	  'git@github.com:VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
 	  requires = {
 		  -- LSP Support
 		  {'git@github.com:neovim/nvim-lspconfig'},
 		  {'git@github.com:williamboman/mason.nvim'},
 		  {'git@github.com:williamboman/mason-lspconfig.nvim'},
 
-		  -- Autocompletion
-		  {'git@github.com:hrsh7th/nvim-cmp'},
-		  {'git@github.com:hrsh7th/cmp-buffer'},
-		  {'git@github.com:hrsh7th/cmp-path'},
-		  {'git@github.com:saadparwaiz1/cmp_luasnip'},
-		  {'git@github.com:hrsh7th/cmp-nvim-lsp'},
-		  {'git@github.com:hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'git@github.com:rafamadriz/friendly-snippets'},
-			{'git@github.com:L3MON4D3/LuaSnip'},
+			-- Autocompletion
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'L3MON4D3/LuaSnip'},
+		 --  -- Autocompletion
+		 --  {'git@github.com:hrsh7th/nvim-cmp'},
+		 --  {'git@github.com:hrsh7th/cmp-buffer'},
+		 --  {'git@github.com:hrsh7th/cmp-path'},
+		 --  {'git@github.com:saadparwaiz1/cmp_luasnip'},
+		 --  {'git@github.com:hrsh7th/cmp-nvim-lsp'},
+		 --  {'git@github.com:hrsh7th/cmp-nvim-lua'},
+			--
+		 --  -- Snippets
+		 --  {'git@github.com:rafamadriz/friendly-snippets'},
+			-- {'git@github.com:L3MON4D3/LuaSnip'},
 	  },
     config = get_setup("lsp"),
   })
