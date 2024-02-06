@@ -42,8 +42,12 @@ require'lspconfig'.gopls.setup{
 	on_attach = on_attach,
 	settings = {
 		gopls = {
-			gofmt = true,
-		},
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
 	},
 }
 

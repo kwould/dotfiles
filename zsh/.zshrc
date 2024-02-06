@@ -28,6 +28,7 @@ function create_virtualenv {
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
 export PATH=$GOPATH:$PATH
 # aliases
 ZSH_THEME="robbyrussell"
