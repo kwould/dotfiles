@@ -28,6 +28,7 @@ set list
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set expandtab
 
 " Mouse
 set mouse=a  " mouse support in terminals
