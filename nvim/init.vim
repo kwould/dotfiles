@@ -1,8 +1,8 @@
 lua require('kwould')
 lua require('kwould.autocmd')
 lua require("kwould.plugins")
-lua require("kwould.mason")
-lua require("kwould.cmp")
+" lua require("kwould.mason")
+" lua require("kwould.cmp")
 " lua require("kwould.lspconfig")
 let mapleader = " "
 " Buffers
