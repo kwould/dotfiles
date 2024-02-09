@@ -46,6 +46,7 @@ cmp.setup({
   },
   -- formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
