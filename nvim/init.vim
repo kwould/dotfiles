@@ -1,7 +1,6 @@
 lua require('kwould')
 lua require('kwould.autocmd')
 lua require("kwould.plugins")
-lua require("kwould.cmp")
 let mapleader = " "
 " Buffers
 set hidden
