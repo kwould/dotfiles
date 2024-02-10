@@ -53,3 +53,21 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
 })
+
+require'lspconfig'.bashls.setup{
+  on_attach = on_attach,
+}
+require'lspconfig'.gopls.setup{
+	on_attach = on_attach,
+	settings = {
+		gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+	},
+}
+
+require'lspconfig'.rust_analyzer.setup{}
