@@ -65,7 +65,7 @@ require'lspconfig'.gopls.setup{
         unusedparams = true,
       },
       staticcheck = true,
-      gofumpt = true,
+      -- gofumpt = true,
     },
 	},
 }

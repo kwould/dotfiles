@@ -46,11 +46,6 @@ return require('packer').startup(function()
   use 'git@github.com:mfussenegger/nvim-dap-python'
   --colorscheme
   use { "git@github.com:ellisonleao/gruvbox.nvim" }
-  --   null-ls
-  use ({ 
-    "git@github.com:jose-elias-alvarez/null-ls.nvim", 
-    config=get_setup("null-ls")
-  })
   use ({
   'git@github.com:lewis6991/gitsigns.nvim',
   config = get_setup("gitsigns"),
