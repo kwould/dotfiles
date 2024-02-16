@@ -8,8 +8,8 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Splits
-map("n", "<Leader>vs", ":vsplit")
-map("n", "<Leader>hs", ":split")
+map("n", "<Leader>vs", "<cmd>vsplit<cr>")
+map("n", "<Leader>hs", "<cmd>split<cr>")
 
 --Ex
 map("n", "<Leader>el", ":Ex")
