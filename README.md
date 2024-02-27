@@ -16,3 +16,4 @@ where they are needed
 
 # Things needed
 1. Script to install packages and link proper dotfiles via stow
+2. Figure out a way to integrate this with nixos
