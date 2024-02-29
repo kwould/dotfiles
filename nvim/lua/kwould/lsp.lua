@@ -34,7 +34,6 @@ require('mason-lspconfig').setup({
   }
 })
 
-require('kwould.lspconfig')
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
@@ -65,7 +64,6 @@ require'lspconfig'.gopls.setup{
         unusedparams = true,
       },
       staticcheck = true,
-      -- gofumpt = true,
     },
 	},
 }
