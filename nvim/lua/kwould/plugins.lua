@@ -99,6 +99,10 @@ end
 	  },
     config = get_setup("lsp"),
   })
+  use({
+    "stevearc/conform.nvim",
+    config = get_setup("conform")
+  })
 	use('theprimeagen/harpoon')
   use ({
         "git@github.com:numToStr/Comment.nvim",

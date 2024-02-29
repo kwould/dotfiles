@@ -1,23 +1,34 @@
 local id = vim.api.nvim_create_augroup("MyGroup", {
-			clear = true 
+			clear = true
 })
-local format_function = function() 
-  print("called") 
-  vim.lsp.buf.format() 
-end
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-	pattern = "*.go",
-	group = id,
-	callback = format_function,
-})
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-	pattern = "*.rs",
-	group = id,
-	callback = format_function,
-})
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-	pattern = "*.py",
-	group = id,
-	callback = format_function,
-})
-
+-- local format_function = function()
+--   print("called")
+--   vim.lsp.buf.format()
+-- end
+-- require("conform").setup({
+--   formatters_by_ft = {
+--     lua = {"stylua"},
+--     python = {"isort", "black"},
+--     go = {""}
+--   }
+--   format_on_save = {
+--     timeout_ms = 500,
+--     lsp_fallback = true,
+--   }
+-- })
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+-- 	pattern = "*.go",
+-- 	group = id,
+-- 	callback = format_function,
+-- })
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+-- 	pattern = "*.rs",
+-- 	group = id,
+-- 	callback = format_function,
+-- })
+-- vim.api.nvim_create_autocmd({"BufWritePre"}, {
+-- 	pattern = "*.py",
+-- 	group = id,
+-- 	callback = format_function,
+-- })
+--
