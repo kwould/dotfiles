@@ -10,8 +10,9 @@ require("conform").setup({
     python = { "isort", "black" },
     -- Use a sub-list to run only the first available formatter
     javascript = { { "prettierd", "prettier" } },
-    go = { "gofmt", "goimports", "golines" },
+    go = { "gofmt", "goimports", },
     rust = { "rustfmt" },
-    yaml = { "yamlfix" },
+    -- yaml = { "yamlfix" },
+    terraform = { "terraform-fmt" },
   },
 })

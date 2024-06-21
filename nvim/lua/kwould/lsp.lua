@@ -1,15 +1,15 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
 
 
-  vim.keymap.set("n", "gd", function() 
-    vim.lsp.buf.definition() 
+  vim.keymap.set("n", "gd", function()
+    vim.lsp.buf.definition()
   end, opts)
-  vim.keymap.set("n", "gds", function() 
+  vim.keymap.set("n", "gds", function()
     vim.cmd('split')
-    vim.lsp.buf.definition() 
+    vim.lsp.buf.definition()
   end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -24,7 +24,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer', 'gopls'},
+  ensure_installed = { 'tsserver', 'rust_analyzer', 'gopls' },
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -35,17 +35,17 @@ require('mason-lspconfig').setup({
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
   sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp'},
-    {name = 'nvim_lua'},
+    { name = 'path' },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
   },
   -- formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -53,19 +53,21 @@ cmp.setup({
   }),
 })
 
-require'lspconfig'.bashls.setup{
+require 'lspconfig'.bashls.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.gopls.setup{
-	on_attach = on_attach,
-	settings = {
-		gopls = {
+require 'lspconfig'.gopls.setup {
+  on_attach = on_attach,
+  settings = {
+    gopls = {
       analyses = {
         unusedparams = true,
       },
       staticcheck = true,
     },
-	},
+  },
 }
 
-require'lspconfig'.rust_analyzer.setup{}
+require 'lspconfig'.rust_analyzer.setup {}
+require 'lspconfig'.terraformls.setup {}
+require 'lspconfig'.tflint.setup {}

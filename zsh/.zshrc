@@ -2,6 +2,7 @@
 export PATH=$HOME/opt/homebrew/bin/brew:$HOME/bin:/usr/local/bin:$PATH:/Users/kevincasado/Library/Python/3.10/bin:/Users/kcasado/.cargo/bin
 alias zrs="source ~/.zshrc"
 export XDG_CONFIG_HOME=~/.config
+alias ssh="TERM=xterm ssh"
 alias gs="git status"
 alias gr="git fetch; git rebase -i origin/main"
 alias gR="git fetch; git rebase -i origin/master"
