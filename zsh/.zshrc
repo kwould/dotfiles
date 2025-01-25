@@ -172,3 +172,13 @@ if [ -f "$HOME/.personalrc" ]; then
 	source $HOME/.personalrc
 fi
 export DOTFILE_LOC="~/dotfiles"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/kcasado/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+akhqup='pushd ~/Desktop && docker-compose up -d --build && popd'
+akhqopen='open http://localhost:8080'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
