@@ -1,112 +1,110 @@
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePost",
-  { command = "source <afile> | PackerCompile", group = packer_group, pattern = "plugins.lua" }
-)
-
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "git@github.com/wbthomason/packer.nvim",
-    install_path,
-  })
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-vim.api.nvim_command("packadd packer.nvim")
--- returns the require for use in `config` parameter of packer's use
--- expects the name of the config file
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader =' '
+vim.g.maplocalleader =' '
 function get_setup(name)
   return string.format('require("kwould/%s")', name)
 end
 
-return require('packer').startup(function()
-  use ({
-  "git@github.com:folke/trouble.nvim",
-  requires="git@github.com:kyazdani42/nvim-web-devicons",
-  config=get_setup("trouble") 
-  })
-  use({
+require('lazy').setup({
+  {
+    "git@github.com:folke/trouble.nvim",
+    dependencies = "git@github.com:kyazdani42/nvim-web-devicons",
+    config = get_setup("trouble")
+  },
+  {
     "git@github.com:folke/lsp-colors.nvim",
-    config=get_setup("colors"),
-  })
+    config = get_setup("colors"),
+  },
   -- metals
-  use({'git@github.com:scalameta/nvim-metals', requires = { "git@github.com:nvim-lua/plenary.nvim" }})
-  -- Packer can manage itself
-  use 'git@github.com:wbthomason/packer.nvim'
-  -- dap
-  use ({'git@github.com:mfussenegger/nvim-dap', config=get_setup("dap")})
+  { 'git@github.com:scalameta/nvim-metals', dependencies = { "git@github.com:nvim-lua/plenary.nvim" } },
 
-  use { "git@github.com:rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}, config=get_setup("dap-ui")}
-  use ({'git@github.com:theHamsta/nvim-dap-virtual-text', config=get_setup("dap-virtual-text")})
-  --python-debuger
-  use 'git@github.com:mfussenegger/nvim-dap-python'
+  -- { "git@github.com:rcarriga/nvim-dap-ui", 
+  -- dependencies = { 
+  --   {"mfussenegger/nvim-dap", config= get_setup("dap")},
+  --   { "nvim-neotest/nvim-nio" },
+  --
+  -- }, 
+  --   config = get_setup("dap-ui") },
+  -- { 'git@github.com:theHamsta/nvim-dap-virtual-text', config = get_setup("dap-virtual-text") },
+  -- --python-debuger
+  -- 'git@github.com:mfussenegger/nvim-dap-python',
   --colorscheme
-  use { "git@github.com:ellisonleao/gruvbox.nvim" }
-  use ({
-  'git@github.com:lewis6991/gitsigns.nvim',
-  config = get_setup("gitsigns"),
-  })
-  use({
-      "git@github.com:windwp/nvim-autopairs",
-      after = "nvim-cmp",
-      config = get_setup("autopairs"),
-    })
-    --
-    -- telescope
-    use({
-      "git@github.com:nvim-telescope/telescope.nvim",
-      module = "telescope",
-      cmd = "Telescope",
-      requires = {
-        { "git@github.com:nvim-lua/plenary.nvim" },
-        { "git@github.com:nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      },
-      config = get_setup("telescope"),
-    })
-    -- lspconfigs 
-		-- dap-go
-    use {'git@github.com:leoluz/nvim-dap-go', 
-		config = get_setup("dap-go")}
-    -- treesitter
-    use({
-      "git@github.com:nvim-treesitter/nvim-treesitter",
-      config = get_setup("treesitter"),
-      run = ":TSUpdate",
-    })
-    use {'git@github.com:nvim-orgmode/orgmode', config = function()
-        require('orgmode').setup_ts_grammar{}
-end
-}
-    -- completion stuff
-    use({ "git@github.com:onsails/lspkind-nvim", requires = { { "git@github.com:famiu/bufdelete.nvim" } } })
-    use({
-	  'git@github.com:VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-	  requires = {
-		  -- LSP Support
-		  {'git@github.com:neovim/nvim-lspconfig'},
-		  {'git@github.com:williamboman/mason.nvim'},
-		  {'git@github.com:williamboman/mason-lspconfig.nvim'},
+  { "git@github.com:ellisonleao/gruvbox.nvim" },
+  {
+    'git@github.com:lewis6991/gitsigns.nvim',
+    config = get_setup("gitsigns"),
+  },
+  --
+  -- telescope
+  {
+    "git@github.com:nvim-telescope/telescope.nvim",
+    module = "telescope",
+    cmd = "Telescope",
+    dependencies = {
+      { "git@github.com:nvim-lua/plenary.nvim" },
+      { "git@github.com:nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    config = get_setup("telescope"),
+  },
+  -- lspconfigs
+  -- -- dap-go
+  -- { 'git@github.com:leoluz/nvim-dap-go',
+  --   config = get_setup("dap-go") },
+  -- treesitter
+  {
+    "git@github.com:nvim-treesitter/nvim-treesitter",
+    config = get_setup("treesitter"),
+    build = ":TSUpdate",
+  },
+  { 'git@github.com:nvim-orgmode/orgmode'},
+  -- completion stuff
+  { "git@github.com:onsails/lspkind-nvim", dependencies = { { "git@github.com:famiu/bufdelete.nvim" } } },
+  {
+    'git@github.com:VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      -- LSP Support
+      { 'git@github.com:neovim/nvim-lspconfig' },
+      { 'git@github.com:williamboman/mason.nvim' },
+      { 'git@github.com:williamboman/mason-lspconfig.nvim' },
 
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'L3MON4D3/LuaSnip'},
-	  },
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'L3MON4D3/LuaSnip' },
+      {
+        "git@github.com:windwp/nvim-autopairs",
+        config = get_setup("autopairs"),
+      },
+    },
     config = get_setup("lsp"),
-  })
-  use({
+  },
+  {
     "stevearc/conform.nvim",
     config = get_setup("conform")
-  })
-	use('theprimeagen/harpoon')
-  use ({
-        "git@github.com:numToStr/Comment.nvim",
-        config = function() require("Comment").setup() end,
-      })
-end)
-
+  },
+  'theprimeagen/harpoon',
+  {
+    "git@github.com:numToStr/Comment.nvim",
+    config = function() require("Comment").setup() end,
+  },
+})

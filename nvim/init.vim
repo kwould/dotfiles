@@ -1,6 +1,8 @@
 lua require('kwould')
 lua require('kwould.autocmd')
 lua require("kwould.plugins")
+lua require('kwould.lsp')
+lua require('kwould.treesitter')
 let mapleader = " "
 " Buffers
 set hidden
@@ -45,5 +47,5 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
 nnoremap <Leader>sv :source $MYVIMRC<CR>
-lua require('dap-python').setup('$HOME/workspace/.venv/bin/activate')
+" lua require('dap-python').setup('$HOME/workspace/.venv/bin/activate')
 autocmd FileType *.py set shiftwidth=2
