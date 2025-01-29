@@ -26,19 +26,6 @@ end
 
 require('lazy').setup({
   {
-    "git@github.com:folke/trouble.nvim",
-    dependencies = "git@github.com:kyazdani42/nvim-web-devicons",
-    config = get_setup("trouble")
-  },
-  {
-  'stevearc/oil.nvim',
-  opts = {},
-  -- Optional dependencies
-  dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-  lazy = false,
-  },
-  {
     "git@github.com:folke/lsp-colors.nvim",
     config = get_setup("colors"),
   },
@@ -83,6 +70,7 @@ require('lazy').setup({
       { "git@github.com:nvim-lua/plenary.nvim" },
       { "git@github.com:nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
+    
     config = get_setup("telescope"),
   },
   -- lspconfigs
@@ -127,5 +115,7 @@ require('lazy').setup({
     "git@github.com:numToStr/Comment.nvim",
     config = function() require("Comment").setup() end,
   },
+  { import = "kwould.plugins"},
+  -- { import = "kwould.plugins" },
   install = { colorscheme = "gruvbox" },
 })

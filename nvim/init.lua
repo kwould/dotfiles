@@ -6,7 +6,7 @@ vim.g.netrw_winsize = 25
 vim.opt_global.shortmess:remove("F")
 -- require('kwould')
 require('kwould.autocmd')
-require("kwould.plugins")
+require("kwould.lazy")
 require('kwould.lsp')
 require('kwould.treesitter')
 require('kwould.telescope')
@@ -43,16 +43,16 @@ vim.g.sidescrolloff = 3
 -- set expandtab
 
 vim.g.setlist = true
-vim.g.tabstop = 2
-vim.g.softtabstop = 2
-vim.g.shiftwidth = 2
-vim.g.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 -- " Mouse
 -- set mouse=a  " mouse support in terminals
 vim.g.mouse = "a"
 -- " Lines
 -- set relativenumber
-vim.g.relativenumber = true
+vim.opt.relativenumber = true
 -- " Colorscheme options.
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
