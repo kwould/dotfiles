@@ -3,6 +3,7 @@ lua require('kwould.autocmd')
 lua require("kwould.plugins")
 lua require('kwould.lsp')
 lua require('kwould.treesitter')
+lua require('kwould.telescope')
 let mapleader = " "
 " Buffers
 set hidden
