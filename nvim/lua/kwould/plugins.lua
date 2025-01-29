@@ -31,19 +31,16 @@ require('lazy').setup({
     config = get_setup("trouble")
   },
   {
-    "git@github.com:folke/lsp-colors.nvim",
-    config = get_setup("colors"),
-  },
-  {
   'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
   opts = {},
   -- Optional dependencies
   dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
+  },
+  {
+    "git@github.com:folke/lsp-colors.nvim",
+    config = get_setup("colors"),
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -71,7 +68,7 @@ require('lazy').setup({
   -- --python-debuger
   -- 'git@github.com:mfussenegger/nvim-dap-python',
   --colorscheme
-  { "git@github.com:ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
   {
     'git@github.com:lewis6991/gitsigns.nvim',
     config = get_setup("gitsigns"),
@@ -130,4 +127,5 @@ require('lazy').setup({
     "git@github.com:numToStr/Comment.nvim",
     config = function() require("Comment").setup() end,
   },
+  install = { colorscheme = "gruvbox" },
 })
