@@ -30,17 +30,20 @@ require("lazy").setup({
 		config = get_setup("colors"),
 	},
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-		},
-		build = "make tiktoken", -- Only on MacOS or Linux
-		opts = {
-			-- See Configuration section for options
-		},
-		-- See Commands section for default commands if you want to lazy load on them
+		"github.com/copilot.vim",
 	},
+	-- {
+	-- 	"CopilotC-Nvim/CopilotChat.nvim",
+	-- 	dependencies = {
+	-- 		{ "github/copilot.vim" },
+	-- 		{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+	-- 	},
+	-- 	build = "make tiktoken", -- Only on MacOS or Linux
+	-- 	opts = {
+	-- 		-- See Configuration section for options
+	-- 	},
+	-- 	-- See Commands section for default commands if you want to lazy load on them
+	-- },
 	-- metals
 	{ "git@github.com:scalameta/nvim-metals", dependencies = { "git@github.com:nvim-lua/plenary.nvim" } },
 
@@ -56,11 +59,6 @@ require("lazy").setup({
 	-- 'git@github.com:mfussenegger/nvim-dap-python',
 	--colorscheme
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
-	{
-		"git@github.com:lewis6991/gitsigns.nvim",
-		config = get_setup("gitsigns"),
-	},
-	--
 	-- telescope
 	{
 		"git@github.com:nvim-telescope/telescope.nvim",
@@ -82,29 +80,29 @@ require("lazy").setup({
 		config = get_setup("treesitter"),
 		build = ":TSUpdate",
 	},
+	-- { "hrsh7th/nvim-cmp" },
 	{ "git@github.com:nvim-orgmode/orgmode" },
 	-- completion stuff
 	{ "git@github.com:onsails/lspkind-nvim", dependencies = { { "git@github.com:famiu/bufdelete.nvim" } } },
-	{
-		"git@github.com:VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		dependencies = {
-			-- LSP Support
-			{ "git@github.com:neovim/nvim-lspconfig" },
-			{ "git@github.com:williamboman/mason.nvim" },
-			{ "git@github.com:williamboman/mason-lspconfig.nvim" },
-
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "L3MON4D3/LuaSnip" },
-			{
-				"git@github.com:windwp/nvim-autopairs",
-				config = get_setup("autopairs"),
-			},
-		},
-		config = get_setup("lsp"),
-	},
+	-- {
+	-- 	"git@github.com:VonHeikemen/lsp-zero.nvim",
+	-- 	branch = "v3.x",
+	-- 	dependencies = {
+	-- 		-- LSP Support
+	-- 		{ "git@github.com:neovim/nvim-lspconfig" },
+	-- 		{ "git@github.com:williamboman/mason.nvim" },
+	-- 		{ "git@github.com:williamboman/mason-lspconfig.nvim" },
+	--
+	-- 		-- Autocompletion
+	-- 		{ "hrsh7th/cmp-nvim-lsp" },
+	-- 		{ "L3MON4D3/LuaSnip" },
+	-- 		{
+	-- 			"git@github.com:windwp/nvim-autopairs",
+	-- 			config = get_setup("autopairs"),
+	-- 		},
+	-- 	},
+	-- 	config = get_setup("lsp"),
+	-- },
 	"theprimeagen/harpoon",
 	{
 		"git@github.com:numToStr/Comment.nvim",

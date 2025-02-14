@@ -1,15 +1,12 @@
-print("Hello from init.lua")
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.opt_global.shortmess:remove("F")
--- require('kwould')
-require('kwould.autocmd')
+require("kwould.autocmd")
 require("kwould.lazy")
-require('kwould.lsp')
-require('kwould.treesitter')
-require('kwould.telescope')
+require("kwould.treesitter")
+require("kwould.telescope")
 vim.g.mapleader = " "
 -- " Buffers
 vim.g.autoread = true
@@ -74,4 +71,3 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>")
 -- lua require('dap-python').setup('$HOME/workspace/.venv/bin/activate')
 -- autocmd FileType *.py set shiftwidth=2
-

@@ -38,6 +38,7 @@ require("lspconfig").bashls.setup({
 	on_attach = on_attach,
 })
 require("lspconfig").lua_ls.setup({})
+-- require("lspconfig").gopls.setup({})
 require("lspconfig").gopls.setup({
 	on_attach = on_attach,
 	settings = {
