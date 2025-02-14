@@ -82,6 +82,13 @@ require("lazy").setup({
 	},
 	-- { "hrsh7th/nvim-cmp" },
 	{ "git@github.com:nvim-orgmode/orgmode" },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
 	-- completion stuff
 	{ "git@github.com:onsails/lspkind-nvim", dependencies = { { "git@github.com:famiu/bufdelete.nvim" } } },
 	-- {
